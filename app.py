@@ -7,7 +7,7 @@ from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 import pandas as pd
 import plotly.express as px
-nltk.download('punkt')
+nltk.download('punkt_tab')
 @st.cache_resource
 def load_model():
     sentiment_model = pipeline("sentiment-analysis", model="nlptown/bert-base-multilingual-uncased-sentiment")
