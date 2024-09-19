@@ -1,5 +1,5 @@
 import streamlit as st
-#import contractions
+import contractions
 import nltk
 from nltk.corpus import stopwords
 from transformers import pipeline
