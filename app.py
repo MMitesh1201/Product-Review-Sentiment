@@ -101,12 +101,33 @@ if uploaded_file is not None:
         sentiment_counts = result_df['sentiment'].value_counts()
 
         # Plot a bar chart using Plotly
-        fig = px.bar(sentiment_counts, 
-                     x=sentiment_counts.index, 
-                     y=sentiment_counts.values, 
-                     labels={'x': 'Sentiment', 'y': 'Count'},
-                     title='Sentiment Distribution')
+        
+        fig = px.bar(
+         sentiment_counts, 
+         x=sentiment_counts.index, 
+         y=sentiment_counts.values, 
+         color=sentiment_counts.index,  # Add color to bars based on sentiment
+         labels={'x': 'Sentiment', 'y': 'Count'},
+         title='Sentiment Distribution',
+          text=sentiment_counts.values,  # Display the count on each bar
+           color_discrete_sequence=px.colors.qualitative.Pastel  # Use a vibrant color palette
+)
+        fig.update_traces(
+    textposition='outside',  # Position text outside the bars for clarity
+    hovertemplate='<b>%{x}</b><br>Count: %{y}<extra></extra>',  # Customize hover information
+    marker_line_width=1,  # Add a border to bars for a sharp look
+)
+
+        fig.update_layout(
+    title_font_size=24,  # Make the title larger
+    xaxis_title_font_size=18,
+    yaxis_title_font_size=18,
+    plot_bgcolor='rgba(0,0,0,0)',  # Transparent background
+    paper_bgcolor='white',  # Light grey background for the chart
+    xaxis=dict(showgrid=False),  # Remove x-axis gridlines
+    yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='white'),  # Light y-axis grid
+    font=dict(family="Arial", size=14),  # Change font for a modern look
+)
 
         # Display the plot
-        st.plotly_chart(fig)
-    
+    st.plotly_chart(fig)
