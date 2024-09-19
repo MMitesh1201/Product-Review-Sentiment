@@ -5,3 +5,4 @@ transformers
 pandas
 plotly
 tensorflow
+tf-keras
