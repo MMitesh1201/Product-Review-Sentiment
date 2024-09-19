@@ -1,0 +1,6 @@
+streamlit
+contractions
+nltk
+transformers 
+pandas
+plotly
